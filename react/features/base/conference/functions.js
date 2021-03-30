@@ -67,6 +67,8 @@ export function commonUserJoinedHandling(
         user: Object) {
     const id = user.getId();
     const displayName = user.getDisplayName();
+    console.log('Id : ' + id);
+    console.log('Name : ' + displayName);
 
     if (user.isHidden()) {
         dispatch(hiddenParticipantJoined(id, displayName));
