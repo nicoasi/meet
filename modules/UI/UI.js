@@ -11,6 +11,7 @@ import { getLocalParticipant } from '../../react/features/base/participants';
 import { toggleChat } from '../../react/features/chat';
 import { setDocumentUrl } from '../../react/features/etherpad';
 import { setFilmstripVisible } from '../../react/features/filmstrip';
+import { setTileView } from '../../react/features/video-layout/actions';
 import { joinLeaveNotificationsDisabled, setNotificationsEnabled } from '../../react/features/notifications';
 import {
     dockToolbox,
@@ -144,6 +145,7 @@ UI.start = function() {
     VideoLayout.resizeVideoArea();
 
     sharedVideoManager = new SharedVideoManager(eventEmitter);
+    APP.store.dispatch(setFilmstripVisible(false));
 
     if (isMobileBrowser()) {
         $('body').addClass('mobile-browser');
