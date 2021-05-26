@@ -87,6 +87,12 @@ export function shouldDisplayTileView(state: Object = {}) {
     if (disableTileView) {
         return false;
     }
+    
+    const { iAmRecorder } = state['features/base/config'];
+    
+    if (iAmRecorder) {
+        return true;
+    }
 
     const { tileViewEnabled } = state['features/video-layout'];
 
@@ -95,8 +101,7 @@ export function shouldDisplayTileView(state: Object = {}) {
         // do that.
         return tileViewEnabled;
     }
-
-    const { iAmRecorder } = state['features/base/config'];
+   
 
     // None tile view mode is easier to calculate (no need for many negations), so we do
     // that and negate it only once.
