@@ -1773,7 +1773,19 @@ export default {
                     }
                 }
             })
-            .then(() => {
+            .then(async () => {
+            
+            let desktopResizeConstraints = {
+                width: 1280,
+                height: 720
+            };
+
+            try {
+                await this.localVideo.track.applyConstraints(desktopResizeConstraints);
+            } catch (err) {
+                logger.error('Failed to apply constraints on the desktop stream for presenter mode', err);
+            }
+            
                 this.videoSwitchInProgress = false;
                 if (config.enableScreenshotCapture) {
                     APP.store.dispatch(toggleScreenshotCaptureEffect(true));
